@@ -1,4 +1,4 @@
-import IMU from imu
+import imu
 import os
 
 imu = IMU()
