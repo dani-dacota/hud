@@ -1,7 +1,7 @@
 import imu
 import os
 
-imu = IMU()
+imu = imu.IMU()
 
 while True:
     # print('Distance:', IMU.dist())
