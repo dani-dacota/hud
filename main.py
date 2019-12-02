@@ -51,13 +51,13 @@ if __name__ == "__main__":
         # currentTime = now.strftime("%H:%M")
 
         # set cursor position
-        oled.set_cursor(10, 10)  # top left of screen
+        oled.set_cursor(2, 10)  # top left of screen
         oled.print('Ax:' + str(Ax))
 
-        oled.set_cursor(10, 20)
+        oled.set_cursor(2, 20)
         oled.print('Ay:' + str(Ay))
 
-        oled.set_cursor(10, 30)
+        oled.set_cursor(2, 30)
         oled.print('Az:' + str(Az))
 
         # display screen
