@@ -1,6 +1,6 @@
 from __future__ import print_function
 from datetime import datetime
-import qwiic_py
+# import qwiic_py
 import qwiic
 import sys
 import mpu
