@@ -49,7 +49,7 @@ def read_raw_data(addr):
     # to get signed value from mpu6050
     if(value > 32768):
         value = value - 65536
-    return round(value, 2)
+    return value
 
 
 if __name__ == "__main__":
