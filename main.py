@@ -60,6 +60,8 @@ if __name__ == "__main__":
         oled.set_cursor(2, 35)
         oled.print('Az:' + str(Az))
 
+        print(Ax, Ay, Az)
+
         # display screen
         oled.display()
 
