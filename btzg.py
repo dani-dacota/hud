@@ -16,10 +16,10 @@ oled.set_font_type(1)
 #setcursor on OLED
 oled.set_cursor(2, 35)
 
- #print to OLED
+#print to OLED
 oled.print('BT')
 
-# display screen
+#display screen
 oled.display()
 
 server_sock=BluetoothSocket( RFCOMM )
