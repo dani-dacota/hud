@@ -15,15 +15,15 @@ while True:
     print ("Accepted connection from ", client_info)
     try:
         data = client_sock.recv(1024)
-        print ("received", data)	
-        data = 'WTF!' 
+        print "Phone sent" + data
+        data = "RPI received" +  data 
         client_sock.send(data)
-        print ("sent", data)
+        print "Sent to Phone", data
     except IOError:
         pass
     except KeyboardInterrupt:
-        print ("disconnected by user")
+        print "disconnected by user"
     except:
         client_sock.close()
         server_sock.close()
-        print ("all done")
+        print "all done"
