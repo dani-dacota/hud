@@ -22,8 +22,8 @@ while True:
     except IOError:
         pass
     except KeyboardInterrupt:
-        print ("disconnected")
-    finally:
+        print ("disconnected by user")
+    except:
         client_sock.close()
         server_sock.close()
         print ("all done")
