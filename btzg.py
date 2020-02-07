@@ -17,7 +17,7 @@ oled.set_font_type(1)
 oled.set_cursor(2, 35)
 
 #print to OLED
-oled.write("BT")
+oled.print("BT")
 
 #display screen
 oled.display()
