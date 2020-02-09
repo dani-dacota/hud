@@ -38,7 +38,8 @@ while True:
         connected = False
     except KeyboardInterrupt:
         print "disconnected by user"
-        client_sock.close()
-        server_sock.close()
-        print "all done"
+        if connected:
+            client_sock.close()
+            server_sock.close()
+            print "socket closed"
         break
