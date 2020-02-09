@@ -25,8 +25,8 @@ while True:
             client_sock, client_info = wait_for_connection()
             connected = True
         data = client_sock.recv(1024)
-        print ("Phone sent:", data)
-        data = "RPI received: " +  data
+        print ("Phone sent:", str(data))
+        data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")
     except IOError:
