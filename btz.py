@@ -24,6 +24,7 @@ while True:
         print "Sent to Phone", data
     except IOError:
         pass
+        print "IOError"
     except KeyboardInterrupt:
         print "disconnected by user"
         client_sock.close()
