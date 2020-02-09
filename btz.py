@@ -18,11 +18,15 @@ def wait_for_connection():
     client_sock, client_info = server_sock.accept()
     print "Accepted connection from ", client_info
     return client_sock, client_info
+    
 
-client_sock, client_info = wait_for_connection()
+connected = False
 
 while True:
     try:
+        if not connected:
+            client_sock, client_info = wait_for_connection()
+            connected = True
         data = client_sock.recv(1024)
         print "Phone sent", data
         data = "RPI received " +  data 
@@ -31,7 +35,7 @@ while True:
     except IOError:
         pass
         print "device terminated connection"
-        client_sock, client_info = wait_for_connection()
+        connected = False
     except KeyboardInterrupt:
         print "disconnected by user"
         client_sock.close()
