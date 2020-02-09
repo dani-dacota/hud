@@ -17,8 +17,9 @@ def wait_for_connection():
     print "Waiting for connection on RFCOMM channel", port
     client_sock, client_info = server_sock.accept()
     print "Accepted connection from ", client_info
+    return client_sock, client_info
 
-wait_for_connection()
+client_sock, client_info = wait_for_connection()
 
 while True:
     try:
@@ -30,7 +31,7 @@ while True:
     except IOError:
         pass
         print "device terminated connection"
-        wait_for_connection()
+        client_sock, client_info = wait_for_connection()
     except KeyboardInterrupt:
         print "disconnected by user"
         client_sock.close()
