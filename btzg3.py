@@ -1,6 +1,6 @@
 from bluetooth import *
 import qwiic
-
+import time
 
 # Define oled screen and initialize
 oled = qwiic.QwiicMicroOled()
@@ -8,7 +8,7 @@ oled.begin()
     
 def oled_print(message):
     # clear the screen
-    oled.clear(oled.PAGE)
+    oled.clear(oled.ALL)
     oled.display()
 
     # set the font size
@@ -27,6 +27,10 @@ def oled_print(message):
 print('Ready')
 oled_print('Ready')
 
+for i in range(10):
+    oled.print(10-i)
+    time.sleep(1)
+
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(("",2))
 server_sock.listen(1)
@@ -36,6 +40,9 @@ port = server_sock.getsockname()[1]
 uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
 
 advertise_service( server_sock, "AquaPiServer", service_id = uuid, service_classes = [ uuid, SERIAL_PORT_CLASS ], profiles = [ SERIAL_PORT_PROFILE ],)
+
+print('Advertised')
+oled_print('Advertised')
 
 def wait_for_connection():
     print ("Waiting for connection on RFCOMM channel", port)
