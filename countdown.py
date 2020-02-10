@@ -20,7 +20,7 @@ def oled_print(message):
     oled.display()
 
 for i in range(30):
-    oled_print(str(30-i))
+    oled_print('-'+str(30-i)+'-')
     time.sleep(1)
 
 oled_print('BT:')
