@@ -27,10 +27,6 @@ def oled_print(message):
 print('Ready')
 oled_print('Ready')
 
-for i in range(5):
-    oled.print(str(5-i))
-    time.sleep(1)
-
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(("",2))
 server_sock.listen(1)
@@ -71,6 +67,7 @@ while True:
         oled_print('Terminated')
         connected = False
     except KeyboardInterrupt:
+        oled_print('')
         print ("disconnected by user")
         if connected:
             client_sock.close()
