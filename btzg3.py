@@ -27,9 +27,9 @@ def oled_print(message):
 print('Ready')
 oled_print('Ready')
 
-for i in range(10):
-    oled.print(10-i)
-    time.sleep(1)
+# for i in range(10):
+#     oled.print(10-i)
+#     time.sleep(1)
 
 server_sock=BluetoothSocket( RFCOMM )
 server_sock.bind(("",2))
