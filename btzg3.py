@@ -24,6 +24,11 @@ def oled_print(message):
     # display screen
     oled.display()
 
+def oled_print_list(words):
+    for word in words:
+        oled_print(word)
+        time.sleep(0.5)
+
 print('Ready')
 oled_print('Ready')
 
@@ -57,7 +62,7 @@ while True:
             connected = True
         data = client_sock.recv(1024)
         print ("Phone sent:", str(data))
-        oled_print(data)
+        oled_print_list(str(data).split())
         data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")
