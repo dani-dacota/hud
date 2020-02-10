@@ -8,7 +8,7 @@ oled.begin()
     
 def oled_print(message):
     # clear the screen
-    oled.clear(oled.ALL)
+    oled.clear(oled.PAGE)
     oled.display()
 
     # set the font size
