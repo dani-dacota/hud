@@ -23,7 +23,8 @@ def oled_print(message):
 
     # display screen
     oled.display()
-    
+
+print('Ready')
 oled_print('Ready')
 
 server_sock=BluetoothSocket( RFCOMM )
@@ -44,7 +45,6 @@ def wait_for_connection():
     oled_print('Connected')
     return client_sock, client_info
     
-
 connected = False
 
 while True:
