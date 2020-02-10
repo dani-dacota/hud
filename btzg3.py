@@ -62,7 +62,7 @@ while True:
             connected = True
         data = client_sock.recv(1024)
         print ("Phone sent:", str(data))
-        oled_print_list(str(data).split())
+        oled_print_list(str(data, 'utf-8').split())
         data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")
