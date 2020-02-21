@@ -16,7 +16,7 @@ def integrate(values):
     return [x, y, z]
 
 def idle(value):
-    if -0.5 < value < 0.5:
+    if -1 < value < 1:
         return 0
     return round (value, 1)
 
@@ -55,13 +55,13 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Gx = idle(acc_x/16384.0)
-        Gy = idle(acc_y/16384.0)
-        Az = idle(acc_z/16384.0)
+        Gx = acc_x/16384.0
+        Gy = acc_y/16384.0
+        Az = acc_z/16384.0
 
-        Ax = round(gyro_x/131.0,1)
-        Ay = round(gyro_y/131.0,1)
-        Az = round(gyro_z/131.0,1)
+        Ax = idle(gyro_x/131.0)
+        Ay = idle(gyro_y/131.0)
+        Az = idle(gyro_z/131.0)
 
         # print("Gx=%.2f" % Gx, u'\u00b0' + "/s", "\tGy=%.2f" % Gy, u'\u00b0' + "/s", "\tGz=%.2f" %
         #       Gz, u'\u00b0' + "/s", "\tAx=%.2f g" % Ax, "\tAy=%.2f g" % Ay, "\tAz=%.2f g" % Az)
