@@ -67,7 +67,7 @@ def run():
         accel.append(accel_3d)
         print(accel)
 
-        if len(accel > 4):
+        if len(accel) > 4:
             accel.pop()
 
         # display screen
