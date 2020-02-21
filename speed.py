@@ -79,9 +79,9 @@ def run():
         Vx, Vy, Vz = integrate(accel)
 
         #add speed
-        speed['x'].append(Vx)
-        speed['y'].append(Vy)
-        speed['z'].append(Vz)
+        speed['x'].append(Vx//10)
+        speed['y'].append(Vy//10)
+        speed['z'].append(Vz//10)
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
