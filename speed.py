@@ -6,7 +6,7 @@ import sys
 import mpu
 import time
 
-if __name__ == "__main__":
+def run():
     # Define oled screen and initialize
     oled = qwiic.QwiicMicroOled()
     oled.begin()

@@ -1,1 +1,2 @@
 import speed
+speed.run()
