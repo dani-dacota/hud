@@ -47,9 +47,9 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = round(acc_x/16384.0, 0)
-        Ay = round(acc_y/16384.0, 0)
-        Az = round(acc_z/16384.0, 0)
+        Ax = round(acc_x/16384.0, 1)
+        Ay = round(acc_y/16384.0, 1)
+        Az = round(acc_z/16384.0, 1)
 
         Gx = gyro_x/131.0
         Gy = gyro_y/131.0
@@ -71,9 +71,9 @@ def run():
         Vx, Vy, Vz = integrate(accel)
 
         #add speed
-        speed['x'].append(Vx)
-        speed['y'].append(Vy)
-        speed['z'].append(Vz)
+        speed['x'].append(Vx//10)
+        speed['y'].append(Vy//10)
+        speed['z'].append(Vz//10)
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
