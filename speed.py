@@ -47,9 +47,9 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = round(acc_x/16384.0, 2)
-        Ay = round(acc_y/16384.0, 2)
-        Az = round(acc_z/16384.0, 2)
+        Ax = round(acc_x/16384.0, 0)
+        Ay = round(acc_y/16384.0, 0)
+        Az = round(acc_z/16384.0, 0)
 
         Gx = gyro_x/131.0
         Gy = gyro_y/131.0
@@ -89,10 +89,6 @@ def run():
 
         oled.set_cursor(2, 35)
         oled.print('D:' + str(Dx))
-
-        
-
-        print(Ax, Ay, Az)
 
         # if len(accel) > 4:
         #     accel.pop(0)
