@@ -68,7 +68,7 @@ def run():
         print(accel)
 
         if len(accel) > 4:
-            accel.pop()
+            accel.pop(0)
 
         # display screen
         oled.display()
