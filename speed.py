@@ -13,7 +13,7 @@ def integrate(values):
     y = np.trapz(values['y'])
     z = np.trapz(values['z'])
 
-    return [x, y, z]
+    return [round(x,1), round(y,1), round(z,1)]
 
 def run():
     # Define oled screen and initialize
