@@ -20,6 +20,9 @@ def idle(value):
         return 0
     return round (value, 1)
 
+def o_str(value):
+    return str(round(value,1))
+
 def run():
     # Define oled screen and initialize
     oled = qwiic.QwiicMicroOled()
@@ -87,13 +90,13 @@ def run():
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
         # oled.print('x:' + str(Ax))
-        oled.print('A:' + str(Ax))
+        oled.print('A:' + o_str(Ax))
 
         oled.set_cursor(2, 20)
-        oled.print('V:' + str(Vx))
+        oled.print('V:' + o_str(Vx))
 
         oled.set_cursor(2, 35)
-        oled.print('D:' + str(Dx))
+        oled.print('D:' + o_str(Dx))
 
         # if len(accel) > 4:
         #     accel.pop(0)
