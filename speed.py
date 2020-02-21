@@ -13,7 +13,7 @@ def integrate(values):
     y = np.trapz(values['y'])
     z = np.trapz(values['z'])
 
-    return [round(x,1), round(y,1), round(z,1)]
+    return [x, y, z]
 
 def idle(value):
     if -0.5 < value < 0.5:
@@ -76,9 +76,9 @@ def run():
         Vx, Vy, Vz = integrate(accel)
 
         #add speed
-        speed['x'].append(Vx//10)
-        speed['y'].append(Vy//10)
-        speed['z'].append(Vz//10)
+        speed['x'].append(Vx)
+        speed['y'].append(Vy)
+        speed['z'].append(Vz)
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
