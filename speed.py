@@ -55,13 +55,13 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = idle(acc_x/16384.0)
-        Ay = idle(acc_y/16384.0)
-        Az = idle(acc_z/16384.0)
+        Gx = idle(acc_x/16384.0)
+        Gy = idle(acc_y/16384.0)
+        Gz = idle(acc_z/16384.0)
 
-        Gx = gyro_x/131.0
-        Gy = gyro_y/131.0
-        Gz = gyro_z/131.0
+        Ax = round(gyro_x/131.0,1)
+        Ay = round(gyro_y/131.0,1)
+        Az = round(gyro_z/131.0,1)
 
         # print("Gx=%.2f" % Gx, u'\u00b0' + "/s", "\tGy=%.2f" % Gy, u'\u00b0' + "/s", "\tGz=%.2f" %
         #       Gz, u'\u00b0' + "/s", "\tAx=%.2f g" % Ax, "\tAy=%.2f g" % Ay, "\tAz=%.2f g" % Az)
@@ -85,15 +85,6 @@ def run():
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
-
-        oled.set_cursor(2, 5)  # top left of screen
-        oled.print('Ax:' + o_str(Ax))
-
-        oled.set_cursor(2, 20)
-        oled.print('Gx:' + o_str(Gx))
-
-        oled.set_cursor(2, 35)
-        oled.print('Gy:' + o_str(Gy))
 
         # set cursor position
         # oled.set_cursor(2, 5)  # top left of screen
