@@ -22,8 +22,6 @@ def run():
 
     print(" Reading Data of Gyroscope and Accelerometer")
 
-    accel = []
-
     while True:
 
         # Read Accelerometer raw value
@@ -45,8 +43,6 @@ def run():
         Gy = gyro_y/131.0
         Gz = gyro_z/131.0
 
-        accel_3d = [Ax, Ay, Az]
-
         # print("Gx=%.2f" % Gx, u'\u00b0' + "/s", "\tGy=%.2f" % Gy, u'\u00b0' + "/s", "\tGz=%.2f" %
         #       Gz, u'\u00b0' + "/s", "\tAx=%.2f g" % Ax, "\tAy=%.2f g" % Ay, "\tAz=%.2f g" % Az)
         # sleep(1)
@@ -56,22 +52,18 @@ def run():
 
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('x:' + str(Ax))
+        oled.print('Ax:' + str(Ax))
 
         oled.set_cursor(2, 20)
-        oled.print('y:' + str(Ay))
+        oled.print('Ay:' + str(Ay))
 
         oled.set_cursor(2, 35)
-        oled.print('z:' + str(Az))
+        oled.print('Az:' + str(Az))
 
-        accel.append(accel_3d)
-        print(accel)
-
-        if len(accel > 4):
-            accel.pop()
+        print(Ax, Ay, Az)
 
         # display screen
         oled.display()
 
-        time.sleep(.25)
+        time.sleep(.5)
         oled.clear(oled.PAGE)
