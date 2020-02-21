@@ -15,6 +15,11 @@ def integrate(values):
 
     return [round(x,1), round(y,1), round(z,1)]
 
+def idle(value):
+    if -0.5 < value < 0.5:
+        return 0
+    return round (value, 1)
+
 def run():
     # Define oled screen and initialize
     oled = qwiic.QwiicMicroOled()
@@ -47,9 +52,9 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = round(acc_x/16384.0, 1)
-        Ay = round(acc_y/16384.0, 1)
-        Az = round(acc_z/16384.0, 1)
+        Ax = idle(acc_x/16384.0)
+        Ay = idle(acc_y/16384.0)
+        Az = idle(acc_z/16384.0)
 
         Gx = gyro_x/131.0
         Gy = gyro_y/131.0
