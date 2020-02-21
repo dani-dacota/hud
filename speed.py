@@ -57,7 +57,7 @@ def run():
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
         Gx = idle(acc_x/16384.0)
         Gy = idle(acc_y/16384.0)
-        Gz = idle(acc_z/16384.0)
+        Az = idle(acc_z/16384.0)
 
         Ax = round(gyro_x/131.0,1)
         Ay = round(gyro_y/131.0,1)
@@ -87,14 +87,14 @@ def run():
         Dx, Dy, Dz = integrate(speed)
 
         # set cursor position
-        # oled.set_cursor(2, 5)  # top left of screen
-        # oled.print('A:' + o_str(Ax))
+        oled.set_cursor(2, 5)  # top left of screen
+        oled.print('A:' + o_str(Ax))
 
-        # oled.set_cursor(2, 20)
-        # oled.print('V:' + o_str(Vx))
+        oled.set_cursor(2, 20)
+        oled.print('V:' + o_str(Vx))
 
-        # oled.set_cursor(2, 35)
-        # oled.print('D:' + o_str(Dx))
+        oled.set_cursor(2, 35)
+        oled.print('D:' + o_str(Dx))
 
         # if len(accel) > 4:
         #     accel.pop(0)
