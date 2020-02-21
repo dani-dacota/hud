@@ -86,17 +86,24 @@ def run():
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
 
-
-        # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        # oled.print('x:' + str(Ax))
-        oled.print('A:' + o_str(Ax))
+        oled.print('Ax:' + o_str(Ax))
 
         oled.set_cursor(2, 20)
-        oled.print('V:' + o_str(Vx))
+        oled.print('Gx:' + o_str(Gx))
 
         oled.set_cursor(2, 35)
-        oled.print('D:' + o_str(Dx))
+        oled.print('Gy:' + o_str(Gy))
+
+        # set cursor position
+        # oled.set_cursor(2, 5)  # top left of screen
+        # oled.print('A:' + o_str(Ax))
+
+        # oled.set_cursor(2, 20)
+        # oled.print('V:' + o_str(Vx))
+
+        # oled.set_cursor(2, 35)
+        # oled.print('D:' + o_str(Dx))
 
         # if len(accel) > 4:
         #     accel.pop(0)
