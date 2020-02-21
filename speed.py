@@ -1,10 +1,19 @@
 from __future__ import print_function
 from datetime import datetime
 # import qwiic_py
+import numpy as np
 import qwiic
 import sys
 import mpu
 import time
+
+
+def integrate(values):
+    x = np.trapz(values['x'])
+    y = np.trapz(values['y'])
+    z = np.trapz(values['z'])
+
+    return [x, y, z]
 
 def run():
     # Define oled screen and initialize
@@ -20,9 +29,10 @@ def run():
 
     mpu.MPU_Init()
 
-    print(" Reading Data of Gyroscope and Accelerometer")
+    print("Reading Data of Gyroscope and Accelerometer")
 
-    accel = []
+    accel = {'x':[], 'y':[], 'z':[]}
+    speed = {'x':[], 'y':[], 'z':[]}
 
     while True:
 
@@ -45,8 +55,6 @@ def run():
         Gy = gyro_y/131.0
         Gz = gyro_z/131.0
 
-        accel_3d = [Ax, Ay, Az]
-
         # print("Gx=%.2f" % Gx, u'\u00b0' + "/s", "\tGy=%.2f" % Gy, u'\u00b0' + "/s", "\tGz=%.2f" %
         #       Gz, u'\u00b0' + "/s", "\tAx=%.2f g" % Ax, "\tAy=%.2f g" % Ay, "\tAz=%.2f g" % Az)
         # sleep(1)
@@ -54,21 +62,40 @@ def run():
         # now = datetime.now()
         # currentTime = now.strftime("%H:%M")
 
+        #add accel
+        accel['x'].append(Ax)
+        accel['y'].append(Ay)
+        accel['z'].append(Az)
+
+        #get_speed from accel
+        Vx, Vy, Vz = integrate(accel)
+
+        #add speed
+        speed['x'].append(Vx)
+        speed['y'].append(Vy)
+        speed['z'].append(Vz)
+
+        #get distance from speed
+        Dx, Dy, Dz = integrate(speed)
+
+
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('x:' + str(Ax))
+        # oled.print('x:' + str(Ax))
+        oled.print('A:' + str(Ax))
 
         oled.set_cursor(2, 20)
-        oled.print('y:' + str(Ay))
+        oled.print('V:' + str(Vx))
 
         oled.set_cursor(2, 35)
-        oled.print('z:' + str(Az))
+        oled.print('D:' + str(Dx))
 
-        accel.append(accel_3d)
-        print(accel)
+        
 
-        if len(accel) > 4:
-            accel.pop(0)
+        print(Ax, Ay, Az)
+
+        # if len(accel) > 4:
+        #     accel.pop(0)
 
         # display screen
         oled.display()
