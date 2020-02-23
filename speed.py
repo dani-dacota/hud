@@ -38,7 +38,7 @@ def run():
 
     #display code version
     oled.set_cursor(2, 5)  # top left of screen
-    oled.print('V-0.1.1')
+    oled.print('V-0.1.2')
     oled.display()
     time.sleep(2)
     oled.clear(oled.PAGE)
@@ -58,13 +58,13 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = acc_x/16384.0
-        Ay = acc_y/16384.0
-        Az = acc_z/16384.0
+        Gx = acc_x/16384.0
+        Gy = acc_y/16384.0
+        Gz = acc_z/16384.0
 
-        Gx = idle(gyro_x/131.0)
-        Gy = idle(gyro_y/131.0)
-        Gz = idle(gyro_z/131.0)
+        Ax = idle(gyro_x/131.0)
+        Ay = idle(gyro_y/131.0)
+        Az = idle(gyro_z/131.0)
 
         '''
         #add accel
