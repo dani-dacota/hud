@@ -14,6 +14,9 @@ def integrate(values):
 
     return [x, y, z]
 
+def mag(a,b,c):
+    return (a**2 + b**2 + c**2)**0.5
+
 def idle(value):
     if -1 < value < 1:
         return 0
@@ -66,7 +69,6 @@ def run():
         Ay = idle(gyro_y/131.0)
         Az = idle(gyro_z/131.0)
 
-        '''
         #add accel
         accel['x'].append(Ax)
         accel['y'].append(Ay)
@@ -82,17 +84,16 @@ def run():
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
-        '''
 
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('X:' + o_str(Ax))
+        oled.print('A:' + o_str(mag(Ax,Ay,Az)))
 
         oled.set_cursor(2, 20)
-        oled.print('Y:' + o_str(Ay))
+        oled.print('V:' + o_str(mag(Vx,Vy,Vz)))
 
         oled.set_cursor(2, 35)
-        oled.print('Z:' + o_str(Az))
+        oled.print('D:' + o_str(mag(Dx,Dy,Dz)))
 
         # display screen
         oled.display()
