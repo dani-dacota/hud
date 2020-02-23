@@ -23,7 +23,7 @@ def idle(value):
     return round (value, 1)
 
 def o_str(value):
-    return str(round(value,1))
+    return str(round(value,2))
 
 def run():
     # Define oled screen and initialize
