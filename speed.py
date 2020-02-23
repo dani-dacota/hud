@@ -86,20 +86,6 @@ def run():
         Dx, Dy, Dz = integrate(speed)
 
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('X:' + o_str(Ax))
-
-        oled.set_cursor(2, 20)
-        oled.print('Y:' + o_str(Ay))
-
-        oled.set_cursor(2, 35)
-        oled.print('Z:' + o_str(Az))
-
-        oled.display()
-        time.sleep(0.5)
-        oled.clear(oled.PAGE)
-
-
-        oled.set_cursor(2, 5)  # top left of screen
         oled.print('X:' + o_str(Gx))
 
         oled.set_cursor(2, 20)
