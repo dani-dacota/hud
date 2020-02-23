@@ -61,9 +61,10 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Ax = acc_x/16384.0
-        Ay = acc_y/16384.0
-        Az = acc_z/16384.0
+        #Accelerometer returns values in g (multiply by 9.8 to get m/s^2)
+        Ax = (acc_x/16384.0) * 9.8
+        Ay = (acc_y/16384.0) * 9.8
+        Az = (acc_z/16384.0) * 9.8
 
         Gx = gyro_x/131.0
         Gy = gyro_y/131.0
