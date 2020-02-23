@@ -95,5 +95,5 @@ def run():
         oled.print('Z:' + o_str(Gz))
 
         oled.display()
-        time.sleep(0.5)
+        time.sleep(0.25)
         oled.clear(oled.PAGE)
