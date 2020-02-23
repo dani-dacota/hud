@@ -14,7 +14,7 @@ def integrate(values):
 
     return [x, y, z]
 
-def mag(a,b,c):
+def mag(a,b,c=0):
     return (a**2 + b**2 + c**2)**0.5
 
 def idle(value):
@@ -61,13 +61,13 @@ def run():
         gyro_z = mpu.read_raw_data(mpu.GYRO_ZOUT_H)
 
         # Full scale range +/- 250 degree/C as per sensitivity scale factor
-        Gx = acc_x/16384.0
-        Gy = acc_y/16384.0
-        Gz = acc_z/16384.0
+        Ax = acc_x/16384.0
+        Ay = acc_y/16384.0
+        Az = acc_z/16384.0
 
-        Ax = idle(gyro_x/131.0)
-        Ay = idle(gyro_y/131.0)
-        Az = idle(gyro_z/131.0)
+        Gx = gyro_x/131.0
+        Gy = gyro_y/131.0
+        Gz = gyro_z/131.0
 
         #add accel
         accel['x'].append(Ax)
@@ -87,13 +87,13 @@ def run():
 
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('A:' + o_str(mag(Ax,Ay,Az)))
+        oled.print('A:' + o_str(mag(Ax,Ay)))
 
         oled.set_cursor(2, 20)
-        oled.print('V:' + o_str(mag(Vx,Vy,Vz)))
+        oled.print('V:' + o_str(mag(Vx,Vy)))
 
         oled.set_cursor(2, 35)
-        oled.print('D:' + o_str(mag(Dx,Dy,Dz)))
+        oled.print('D:' + o_str(mag(Dx,Dy)))
 
         # display screen
         oled.display()
