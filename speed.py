@@ -1,6 +1,5 @@
 from __future__ import print_function
 from datetime import datetime
-# import qwiic_py
 import numpy as np
 import qwiic
 import sys
@@ -37,13 +36,17 @@ def run():
 
     mpu.MPU_Init()
 
-    print("Reading Data of Gyroscope and Accelerometer")
+    #display code version
+    oled.set_cursor(2, 5)  # top left of screen
+    oled.print('V 0.1')
+    oled.display()
+    time.sleep(2)
+    oled.clear(oled.PAGE)
 
     accel = {'x':[], 'y':[], 'z':[]}
     speed = {'x':[], 'y':[], 'z':[]}
 
     while True:
-
         # Read Accelerometer raw value
         acc_x = mpu.read_raw_data(mpu.ACCEL_XOUT_H)
         acc_y = mpu.read_raw_data(mpu.ACCEL_YOUT_H)
@@ -63,13 +66,6 @@ def run():
         Ay = idle(gyro_y/131.0)
         Az = idle(gyro_z/131.0)
 
-        # print("Gx=%.2f" % Gx, u'\u00b0' + "/s", "\tGy=%.2f" % Gy, u'\u00b0' + "/s", "\tGz=%.2f" %
-        #       Gz, u'\u00b0' + "/s", "\tAx=%.2f g" % Ax, "\tAy=%.2f g" % Ay, "\tAz=%.2f g" % Az)
-        # sleep(1)
-
-        # now = datetime.now()
-        # currentTime = now.strftime("%H:%M")
-
         #add accel
         accel['x'].append(Ax)
         accel['y'].append(Ay)
@@ -79,25 +75,22 @@ def run():
         Vx, Vy, Vz = integrate(accel)
 
         #add speed
-        speed['x'].append(Vx//10)
-        speed['y'].append(Vy//10)
-        speed['z'].append(Vz//10)
+        speed['x'].append(Vx)
+        speed['y'].append(Vy)
+        speed['z'].append(Vz)
 
         #get distance from speed
         Dx, Dy, Dz = integrate(speed)
 
         # set cursor position
         oled.set_cursor(2, 5)  # top left of screen
-        oled.print('A:' + o_str(Ax))
+        oled.print('X:' + o_str(Ax))
 
         oled.set_cursor(2, 20)
-        oled.print('V:' + o_str(Vx))
+        oled.print('Y:' + o_str(Ay))
 
         oled.set_cursor(2, 35)
-        oled.print('D:' + o_str(Dx))
-
-        # if len(accel) > 4:
-        #     accel.pop(0)
+        oled.print('Z:' + o_str(Az))
 
         # display screen
         oled.display()

@@ -23,4 +23,4 @@ for i in range(30):
     oled_print('-'+str(30-i)+'-')
     time.sleep(1)
 
-oled_print('BT:')
+oled_print('-X-')
