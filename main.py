@@ -14,19 +14,22 @@ def oled_print(message):
     # set the font size
     oled.set_font_type(1)
 
-    # oled.set_cursor(2, 5) 
-    # oled.print('BT:')
+    oled.set_cursor(2, 5) 
+    oled.print('Speed:')
 
     # set cursor position
     oled.set_cursor(2, 20) 
     oled.print(message)
+
+    oled.set_cursor(2, 35) 
+    oled.print('mi/hr')
 
     # display screen
     oled.display()
 
 def oled_print_list(words):
     for word in words:
-        oled_print(word)
+        oled_print(word[:5])
         time.sleep(0.5)
 
 print('Ready')
