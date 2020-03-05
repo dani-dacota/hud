@@ -7,7 +7,7 @@ oled = qwiic.QwiicMicroOled()
 oled.begin()
     
 def oled_print(message):
-    speed, distance = message.split('|')
+    # speed, distance = message.split('|')
 
     # clear the screen
     oled.clear(oled.PAGE)
@@ -21,10 +21,10 @@ def oled_print(message):
 
     # set cursor position
     oled.set_cursor(2, 20) 
-    oled.print(speed)
+    oled.print(message)
 
-    oled.set_cursor(2, 35) 
-    oled.print(distance)
+    # oled.set_cursor(2, 35) 
+    # oled.print(distance)
 
     # display screen
     oled.display()
