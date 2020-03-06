@@ -7,7 +7,7 @@ oled = qwiic.QwiicMicroOled()
 oled.begin()
     
 def oled_print(message):
-    # speed, distance = message.split('|')
+    speed, distance = message.split('|')
 
     # clear the screen
     oled.clear(oled.PAGE)
@@ -21,10 +21,10 @@ def oled_print(message):
 
     # set cursor position
     oled.set_cursor(2, 20) 
-    oled.print(message)
+    oled.print(speed)
 
-    # oled.set_cursor(2, 35) 
-    # oled.print(distance)
+    oled.set_cursor(2, 35) 
+    oled.print(distance)
 
     # display screen
     oled.display()
@@ -67,7 +67,8 @@ while True:
             connected = True
         data = client_sock.recv(1024)
         print ("Phone sent:", str(data))
-        oled_print_list(str(data, 'utf-8').split())
+        # oled_print_list(str(data, 'utf-8').split())
+        oled_print(data)
         data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")
