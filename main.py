@@ -24,6 +24,28 @@ def oled_print(message):
     # display screen
     oled.display()
 
+def oled_print_speed(data):
+    # clear the screen
+    oled.clear(oled.PAGE)
+    oled.display()
+
+    # set the font size
+    oled.set_font_type(1)
+
+    # oled.set_cursor(2, 5) 
+    # oled.print('BT:')
+
+    # set cursor position
+    oled.set_cursor(2, 20) 
+    oled.print(data[0])
+
+    # set cursor position
+    oled.set_cursor(2, 35) 
+    oled.print(data[1])
+
+    # display screen
+    oled.display()
+
 def oled_print_list(words):
     for word in words:
         oled_print(word)
@@ -62,7 +84,11 @@ while True:
             connected = True
         data = client_sock.recv(1024)
         print ("Phone sent:", str(data))
-        oled_print_list(str(data, 'utf-8').split())
+        message = str(data, 'utf-8')
+        if '|' in message:
+            oled_print_speed(message.split('|'))
+        else:
+            oled_print_list(message.split())
         data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")

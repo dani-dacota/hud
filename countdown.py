@@ -13,7 +13,7 @@ def oled_print(message):
     # set the font size
     oled.set_font_type(1)
 
-    oled.set_cursor(2, 5) 
+    oled.set_cursor(20, 20) 
     oled.print(message)
 
     # display screen
@@ -23,4 +23,4 @@ for i in range(30):
     oled_print('-'+str(30-i)+'-')
     time.sleep(1)
 
-oled_print('X-X')
+oled_print('-X-')
