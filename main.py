@@ -15,45 +15,18 @@ def oled_print(message):
     oled.set_font_type(1)
 
     # oled.set_cursor(2, 5) 
-    # oled.print('Speed:')
+    # oled.print('BT:')
 
     # set cursor position
     oled.set_cursor(2, 20) 
     oled.print(message)
 
-    # oled.set_cursor(2, 35) 
-    # oled.print(distance)
-
     # display screen
     oled.display()
-
-def oled_print_speed(message):
-    speed, distance = message.split('|')
-
-    # clear the screen
-    oled.clear(oled.PAGE)
-    oled.display()
-
-    # set the font size
-    oled.set_font_type(1)
-
-    # oled.set_cursor(2, 5) 
-    # oled.print('Speed:')
-
-    # set cursor position
-    oled.set_cursor(2, 20) 
-    oled.print(speed)
-
-    oled.set_cursor(2, 35) 
-    oled.print(distance)
-
-    # display screen
-    oled.display()
-
 
 def oled_print_list(words):
     for word in words:
-        oled_print(word[:5])
+        oled_print(word)
         time.sleep(0.5)
 
 print('Ready')
@@ -89,8 +62,7 @@ while True:
             connected = True
         data = client_sock.recv(1024)
         print ("Phone sent:", str(data))
-        # oled_print_list(str(data, 'utf-8').split())
-        oled_print_speed(data)
+        oled_print_list(str(data, 'utf-8').split())
         data = "RPI received: " + str(data)
         client_sock.send(data)
         print ("Sent to Phone: [", data, "]")
