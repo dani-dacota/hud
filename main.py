@@ -36,11 +36,11 @@ def oled_print_speed(data):
     # oled.print('BT:')
 
     # set cursor position
-    oled.set_cursor(10, 20) 
+    oled.set_cursor(20, 20) 
     oled.print(data[0])
 
     # set cursor position
-    oled.set_cursor(10, 35) 
+    oled.set_cursor(15, 35) 
     oled.print(data[1])
 
     # display screen
