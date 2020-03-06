@@ -13,7 +13,7 @@ def oled_print(message):
     # set the font size
     oled.set_font_type(1)
 
-    oled.set_cursor(20, 20) 
+    oled.set_cursor(35-(len(message)*5), 20) 
     oled.print(message)
 
     # display screen

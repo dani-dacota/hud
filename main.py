@@ -18,7 +18,7 @@ def oled_print(message):
     # oled.print('BT:')
 
     # set cursor position
-    oled.set_cursor(2, 20) 
+    oled.set_cursor(35-(len(message)*5), 20) 
     oled.print(message)
 
     # display screen
