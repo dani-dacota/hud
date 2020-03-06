@@ -40,7 +40,7 @@ def oled_print_speed(data):
     oled.print(data[0])
 
     # set cursor position
-    oled.set_cursor(35-(len(data[0])*5), 35) 
+    oled.set_cursor(35-(len(data[1])*5), 35) 
     oled.print(data[1])
 
     # display screen
@@ -65,14 +65,14 @@ uuid = "94f39d29-7d6d-437d-973b-fba39e49d4ee"
 advertise_service( server_sock, "AquaPiServer", service_id = uuid, service_classes = [ uuid, SERIAL_PORT_CLASS ], profiles = [ SERIAL_PORT_PROFILE ],)
 
 print('Advertised')
-oled_print('Advertised')
+oled_print('Advrtsd')
 
 def wait_for_connection():
     print ("Waiting for connection on RFCOMM channel", port)
     oled_print('Waiting')
     client_sock, client_info = server_sock.accept()
     print ("Accepted connection from ", client_info)
-    oled_print('Connected')
+    oled_print('Connctd')
     return client_sock, client_info
     
 connected = False
@@ -95,7 +95,7 @@ while True:
     except IOError:
         pass
         print ("device terminated connection")
-        oled_print('Terminated')
+        oled_print('Trmintd')
         connected = False
     except KeyboardInterrupt:
         oled_print('')
